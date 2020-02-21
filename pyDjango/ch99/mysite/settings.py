@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    #장고 기본 앱들
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #추가된 앱들
     'bookmark.apps.BookmarkConfig',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     'blog.apps.BlogConfig',
     'photo.apps.PhotoConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,6 @@ TAGGIT_LIMIT = 50
 
 DISQUS_SHORTNAME = 'pydjango-web-programming'
 DISQUS_MY_DOMAIN = 'http://localhost:8000'
+
+#LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'

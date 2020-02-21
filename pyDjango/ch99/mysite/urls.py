@@ -19,18 +19,22 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path
 
-from mysite.views import HomeView
+#교재엔 from mysite.views로 시작함.
+from .views import HomeView
+from .views import UserCreateView, UserCreateDoneTV
 
 #옮길거니까
 #from bookmark.views import BookmarkLV, BookmarkDV
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/', UserCreateView.as_view(), name='register'),
+    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
+    
     path('', HomeView.as_view(), name='home'),
     path('bookmark/', include('bookmark.urls')),
     path('blog/', include('blog.urls')),
     path('photo/', include('photo.urls')),
-    #옛날엔 요런것들 있었다.
-    #path('bookmark/', BookmarkLV.as_view(), name='index'),
-    #path('bookmark/<int:pk>/', BookmarkDV.as_view(), name='detail')
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
