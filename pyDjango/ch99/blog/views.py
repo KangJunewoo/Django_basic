@@ -4,14 +4,14 @@ from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthA
 from django.views.generic.dates import DayArchiveView, TodayArchiveView
 from django.conf import settings
 
-from blog.models import Post
+from .models import Post
 
 from django.views.generic import FormView
-from blog.forms import PostSearchForm
+from .forms import PostSearchForm
 from django.db.models import Q
 from django.shortcuts import render
 
-from djnago.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from mysite.views import OwnerOnlyMixin
