@@ -1,0 +1,16 @@
+python manage.py shell로 장고 셸을 불러올 수 있다.
+Post.objects.all()처럼 db조회를 할 수 있지만, import를 해줘야한다.
+from blog.models import Post와 같이.
+
+우와 진짜편한게 만들수도 있다.
+Post.objects.create(author=me, title='sample title', text='test1123')
+me가 근데 정의되어 있지 않아서, from django.contrib.auth.models import User 해주면 됨.
+그 뒤 me=User.objects.get(username='brian')식으로.
+필터링도 가능.
+Post.objects.filter(title__contains='merong') 식으로.
+
+post=Post.objects.get(title=''Sample title') 해준 뒤
+post.publish()하면 업로드까지 끝.
+
+objects에 관한 기타 메소드들로
+order_by도 있고, . 여러개 써서 chaining도 가능하다.

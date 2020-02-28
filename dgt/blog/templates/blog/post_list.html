@@ -3,10 +3,32 @@
 
 <html>
   <head>
-    <title>Junewoo's blog</title>
+    <title>Junewoo's Blog</title>
   </head>
   <body>
-    <p>Hi there!</p>
-    <p>It works!</p>
+    <div>
+      <h1><a href="">Junewoo's Blog</a></h1>
+    </div>
+    {%for post in posts%}
+      <div>
+        <p>published : {{post.published_date}}</p>
+        <h1><a href="">{{post.title}}</a></h1>
+        <!--|linebreaksbr는 파이프 문자로, 행이 바뀌면 문단으로 변환하라는 의미임.-->
+        <p>{{post.text | linebreaksbr}}</p>
+      </div>
+    {%endfor%}
+<!--
+    <div>
+      <p>published : xx.xx.xxxx, xx:xx</p>
+      <h2><a href="">My first post</a></h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi reiciendis ex earum neque cumque voluptatem, reprehenderit cupiditate quo doloremque magni fugiat, omnis rem nobis deleniti non iste officia facere. Amet!</p>
+    </div>
+
+    <div>
+      <p>published : aa.aa.aaaa, aa:aa</p>
+      <h2><a href="">My second post</a></h2>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam eos sit, sed, temporibus optio ipsum dolor quidem accusamus, earum laboriosam aperiam. Nulla numquam itaque voluptatem sit quae unde consequatur optio.</p>
+    </div>
+-->
   </body>
 </html>
