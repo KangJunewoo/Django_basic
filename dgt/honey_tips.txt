@@ -1,7 +1,54 @@
 기본적으로 장고는 MVT이다.
-서버 -> Model -> View -> Template -> 사용자
+서버(Model -> View -> Template) -> 사용자
 
-python manage.py shell로 장고 셸을 불러올 수 있다.
+0. 맨처음
+가상환경 깔고, 장고 기본화면 띄우는것까지.
+
+가상환경
+  왜 필요한지는 알지? 장고 프로젝트마다 다른 dependencies를 갖고 있으니 그렇다.
+  가상환경 만들고 싶은 폴더로 가서
+  >> python -m venv "가상환경이름" ㄱㄱ.
+  실행은 .\"가상환경이름"\Scripts\activate
+
+장고설치
+  가상환경 첨에는 맨땅이라서, 장고부터 설치해야함.
+  pip으로 장고 깔고, 프로젝트 폴더로 가서
+  >> django-admin startproject mysite ㄱㄱ.
+  그리고 상위 mysite를 프로젝트 이름으로 바꿔주자.
+
+기본설정
+  settings.py로 ㄱㄱ.
+  TIME_ZONE='Asia/Seoul'
+  STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+
+  >>python manage.py startapp "앱이름"으로 앱 생성.
+  settings.py의 INSTALLED_APPS에 등록해줘야 함.
+
+
+1. Model
+models.py에 DB짜고, admin.py에 반영 ㄱㄱ.
+makemigrations -> migrate 해야됨.
+admin 페이지 가서 맘대로 crud 가능.
+
+2. URL&View
+URL
+  urlpatterns에 다 때려박으면 됨.
+  다만 mysite에서 먼저 path('', include('앱이름.urls')) 해주고
+  앱의 urls.py에서 본격적인 url을 써주자.
+
+View
+  핵심적인 controller 느낌.
+  필요에 따라 forms.py 만들 수 있음.
+  보통 get이면 render, post면 redirect로 리턴해주면 끝.
+
+3. Template
+  프론트의 영역이라 자세히는 다루지 말고,
+  base.html로 베이스를 깔고 block content~endblock 사용해 확장하는 테크닉만 알아두자.
+
+==========================================================
+Django Shell에 관하여
+
+>>python manage.py shell로 장고 셸을 불러올 수 있다.
 Post.objects.all()처럼 db조회를 할 수 있지만, import를 해줘야한다.
 from blog.models import Post와 같이.
 
