@@ -1,34 +1,15 @@
-<!--templates/blog 하고 또 blog 폴더를 만들어줘야, 나중에 안헷갈린다고 함.-->
+{%extends 'blog/base.html'%}
 
-
-<html>
-  <head>
-    <title>Junewoo's Blog</title>
-  </head>
-  <body>
-    <div>
-      <h1><a href="">Junewoo's Blog</a></h1>
-    </div>
-    {%for post in posts%}
-      <div>
+{%block content%}
+  {%for post in posts%}
+    <div class='post'>
+      <!--url 'post_detail'은 blog.views.post_detail인것같고, pk로 post의 pk를 쓴다는 말인듯..?-->
+      <h1><a href="{%url 'post_detail' pk=post.pk%}">{{post.title}}</a></h1>
+      <!--linebreaksbr는 파이프 문자로, 행이 바뀌면 문단으로 변환하라는 의미임.-->
+      <p>{{post.text | linebreaksbr}}</p>
+      <div class="date">
         <p>published : {{post.published_date}}</p>
-        <h1><a href="">{{post.title}}</a></h1>
-        <!--|linebreaksbr는 파이프 문자로, 행이 바뀌면 문단으로 변환하라는 의미임.-->
-        <p>{{post.text | linebreaksbr}}</p>
       </div>
-    {%endfor%}
-<!--
-    <div>
-      <p>published : xx.xx.xxxx, xx:xx</p>
-      <h2><a href="">My first post</a></h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi reiciendis ex earum neque cumque voluptatem, reprehenderit cupiditate quo doloremque magni fugiat, omnis rem nobis deleniti non iste officia facere. Amet!</p>
     </div>
-
-    <div>
-      <p>published : aa.aa.aaaa, aa:aa</p>
-      <h2><a href="">My second post</a></h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam eos sit, sed, temporibus optio ipsum dolor quidem accusamus, earum laboriosam aperiam. Nulla numquam itaque voluptatem sit quae unde consequatur optio.</p>
-    </div>
--->
-  </body>
-</html>
+  {%endfor%}
+{%endblock%}

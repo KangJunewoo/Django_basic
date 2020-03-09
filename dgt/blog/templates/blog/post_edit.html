@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <h1>New post</h1>
+  <!--csrf_token은 폼 보안을 위해 필요하단다. post할때 넣어주면 될듯..?-->
+  <!--form.as_p는 폼을 보여주는 역할을 하는 것 같고..-->
+  <form method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+  </form>
+{% endblock %}
