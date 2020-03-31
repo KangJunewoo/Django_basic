@@ -54,4 +54,15 @@ urlpatterns=[
 
   #/blog/99/delete/
   path('<int:pk>/delete/', views.PostDeleteView.as_view(), name='delete'),
+
+  #여기부터는 테스트용(장고 공부용) URL들
+  #아래 주석과 비슷한데, /test/asdf 를 치면 뭐시기가 asdf라는 변수에 담겨 view에 넘어간다.
+  path('test/<str:word>/', views.TestPostLV.as_view(), name='test_post'),
+  
+  
+  #기본적인 렌더링. /test를 url에 치면 views.py에서 TestPostLV로 뷰를 소환함. 이 url의 이름은 test_post로 함.
+  #path('test/', views.TestPostLV.as_view(), name='test_post'),
+  
+
+  
 ] 
