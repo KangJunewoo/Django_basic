@@ -62,9 +62,16 @@ ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
+        #사용할 템플릿 엔진 지정. Jinja2도 있긴한데 거의 이거라고 보면 된다.
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+
+        #템플릿파일 디렉터리. 각각의 앱 템플릿보다 우선해서 이걸 먼저 찾는다.
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
+        #앱 내에서도 템플릿을 찾을 것인가?
         'APP_DIRS': True,
+
+        #context_processors, debug, loaders, string_if_invalid, file_charset 등의 옵션 설정.
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
